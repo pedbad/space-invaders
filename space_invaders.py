@@ -52,6 +52,16 @@ bullet.speed(0)
 bullet.penup()
 bullet.setheading(90)
 bullet.shapesize(0.5, 0.5)
+bullet.hideturtle()
+
+bulletspeed = 20
+
+#Define bullet state
+#we have 2 states:
+#ready - ready to fire bullet
+#fire - bullet is firing
+
+bulletstate = "ready"
 
 
 
@@ -73,11 +83,22 @@ def move_right():
     x = 280
   player.setx(x)
 
+def fire_bullet():
+  #Declare bulletstate as a global if it needs change
+  global bulletstate
+  #Move the bullet to just above the player
+  x = player.xcor()
+  y = player.ycor() + 10
+  bullet.setposition(x,y)
+  bullet.showturtle()
+
+
 
 #create keyboard bindings
 turtle.listen()
 turtle.onkey(move_left, "Left")
 turtle.onkey(move_right, "Right")
+turtle.onkey(fire_bullet, "space")
 
 
 #Main game loop
@@ -102,4 +123,4 @@ while True:
 
 
 
-delay = raw_input("Press enter to finish")
+#delay = raw_input("Press enter to finish")
