@@ -86,11 +86,13 @@ def move_right():
 def fire_bullet():
   #Declare bulletstate as a global if it needs change
   global bulletstate
-  #Move the bullet to just above the player
-  x = player.xcor()
-  y = player.ycor() + 10
-  bullet.setposition(x,y)
-  bullet.showturtle()
+  if bulletstate == "ready": 
+    #Move the bullet to just above the player
+    x = player.xcor()
+    y = player.ycor() + 10
+    bullet.setposition(x,y)
+    bullet.showturtle()
+    bulletstate = "fire"
 
 
 
@@ -121,10 +123,16 @@ while True:
     y = y - 40
     enemy.sety(y)
 
-  #Move the bullet
-  y = bullet.ycor()
-  y = y + bulletspeed
-  bullet.sety(y)
+  #Move the bullet only when bulletstate is "fire"
+  if bulletstate == "fire":
+    y = bullet.ycor()
+    y = y + bulletspeed
+    bullet.sety(y)
+
+  #Check to see if bullet has reached the top
+  if bullet.ycor() > 275:
+    bullet.hideturtle()
+    bulletstate = "ready"
 
 
 
