@@ -44,6 +44,16 @@ enemy.setposition(-200, 250)
 
 enemyspeed = 2
 
+#Create the player's bullet
+bullet = turtle.Turtle()
+bullet.color("yellow")
+bullet.shape("triangle")
+bullet.speed(0)
+bullet.penup()
+bullet.setheading(90)
+bullet.shapesize(0.5, 0.5)
+
+
 
 
 
