@@ -121,6 +121,12 @@ while True:
     y = y - 40
     enemy.sety(y)
 
+  #Move the bullet
+  y = bullet.ycor()
+  y = y + bulletspeed
+  bullet.sety(y)
+
+
 
 
 #delay = raw_input("Press enter to finish")
