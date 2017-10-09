@@ -42,6 +42,8 @@ enemy.speed(0)
 enemy.penup()
 enemy.setposition(-200, 250)
 
+enemyspeed = 2
+
 
 
 
@@ -66,6 +68,28 @@ def move_right():
 turtle.listen()
 turtle.onkey(move_left, "Left")
 turtle.onkey(move_right, "Right")
+
+
+#Main game loop
+while True:
+  #This is a forever loop
+  #Move the enemy
+  x = enemy.xcor()
+  x = x + enemyspeed
+  enemy.setx(x)
+
+  #Move enemy back and down
+  if enemy.xcor() > 280:
+    enemyspeed =  enemyspeed * -1
+    y = enemy.ycor()
+    y = y - 40
+    enemy.sety(y)
+  if enemy.xcor() < -280:
+    enemyspeed = enemyspeed  * -1
+    y = enemy.ycor()
+    y = y - 40
+    enemy.sety(y)
+
 
 
 delay = raw_input("Press enter to finish")
