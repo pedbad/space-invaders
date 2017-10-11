@@ -124,12 +124,12 @@ while True:
   if enemy.xcor() > 280:
     enemyspeed =  enemyspeed * -1
     y = enemy.ycor()
-    y = y - 40
+    y = y - 45
     enemy.sety(y)
   if enemy.xcor() < -280:
     enemyspeed = enemyspeed  * -1
     y = enemy.ycor()
-    y = y - 40
+    y = y - 45
     enemy.sety(y)
 
   #Move the bullet only when bulletstate is "fire"
@@ -151,6 +151,13 @@ while True:
     bullet.setposition(0, -400)
     #Reset the enemy
     enemy.setposition(-200, 250)
+
+  #Check for collision between enemy and player
+  if isCollision(player, enemy):
+    player.hideturtle()
+    enemy.hideturtle()
+    print("GAME OVER")
+    break
 
 
 
