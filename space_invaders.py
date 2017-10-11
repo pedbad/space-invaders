@@ -4,6 +4,7 @@
 import turtle
 import os
 import math
+import random
 
 #Set up the screen
 
@@ -35,13 +36,27 @@ player.setheading(90)
 
 playerspeed = 15
 
-#Create the enemy turtle
-enemy = turtle.Turtle()
-enemy.color("red")
-enemy.shape("circle")
-enemy.speed(0)
-enemy.penup()
-enemy.setposition(-200, 250)
+#Choose number of enemies
+number_of_enemies = 5
+
+#Create an empty list of enemies
+enemiesList = []
+
+#Add enemies to the list
+#We need to create more turtle objects
+
+for i in range(number_of_enemies):
+  #Create the enemy
+  enemiesList.append(turtle.Turtle())
+
+for enemy in enemiesList:
+  enemy.color("red")
+  enemy.shape("circle")
+  enemy.speed(0)
+  enemy.penup()
+  x = random.randint(-200, 200)
+  y = random.randint(100, 200)
+  enemy.setposition(x, y)
 
 enemyspeed = 2
 
