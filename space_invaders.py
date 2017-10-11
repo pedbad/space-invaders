@@ -120,7 +120,9 @@ def move_right():
 def fire_bullet():
   #Declare bulletstate as a global if it needs change
   global bulletstate
-  if bulletstate == "ready": 
+  if bulletstate == "ready":
+    os.system("afplay laser.wav&")
+    #for linux use os.system("aplay laser.wav&")
     #Move the bullet to just above the player
     x = player.xcor()
     y = player.ycor() + 10
@@ -158,16 +160,18 @@ while True:
     if enemy.xcor() > 280:
       enemyspeed =  enemyspeed * -1
       y = enemy.ycor()
-      y = y - 45
+      y = y - 40
       enemy.sety(y)
     if enemy.xcor() < -280:
       enemyspeed = enemyspeed  * -1
       y = enemy.ycor()
-      y = y - 45
+      y = y - 40
       enemy.sety(y)
 
     #Check for collision between bullet and enemy
     if isCollision(bullet, enemy):
+      os.system("afplay explosion.wav&")
+      #for linux use os.system("aplay explosion.wav&") 
       #Reset the bullet
       bullet.hideturtle()
       bulletstate = "ready"
@@ -184,6 +188,8 @@ while True:
 
     #Check for collision between enemy and player
     if isCollision(player, enemy):
+      os.system("afplay explosion.wav&")
+      #for linux use os.system("aplay explosion.wav&") 
       player.hideturtle()
       enemy.hideturtle()
       print("GAME OVER")
